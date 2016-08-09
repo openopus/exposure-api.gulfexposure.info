@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## TL;DR
+```./start-developing```
 
-Things you may want to cover:
+## Details of what that script does
 
-* Ruby version
+* mysql
 
-* System dependencies
+1. Set up `config/database.yml` and run these:
+```bash
+bundle exec rake db:create
+bundle exec rake db:migrate
+bundle exec rake db:seed
+```
+2. Create a `config/application.yml` and add your AWS info
+```bash
+AWS_KEY: [key]
+AWS_SECRET: [secret]
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Deploy to production
+```bash
+bundle exec cap production deploy
+```
