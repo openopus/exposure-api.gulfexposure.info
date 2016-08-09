@@ -1,0 +1,22 @@
+default: &default
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+
+core: &core
+  adapter: mysql2
+  encoding: utf8
+  database: exposure
+  username: exposed
+  password: lesion
+  timeout: 5000
+
+development:
+  <<: *core
+
+production:
+  <<: *core
+
+test:
+  <<: *default
+  database: db/test.sqlite3

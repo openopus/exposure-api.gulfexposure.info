@@ -7,7 +7,10 @@ grant all privileges on exposure_dev.* to exposed@localhost identified by 'lesio
 grant all privileges on exposure_dev.* to exposed@localhost.com identified by 'lesion';
 grant all privileges on exposure_test.* to exposed@localhost identified by 'lesion';
 EOF
+
+if [ ! -f config/database.yml ]; then cp config/database.yml-localhost config/database.yml; fi
 bundle install --path=vendor
+
 # bundle exec rake db:drop
 bundle exec rake db:create 2>/dev/null
 bundle exec rake db:migrate
