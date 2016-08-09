@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  guid: MyString
+  birthdate: 2016-08-09
+  codename: MyString
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  guid: MyString
+  birthdate: 2016-08-09
+  codename: MyString
+  latitude: 1.5
+  longitude: 1.5

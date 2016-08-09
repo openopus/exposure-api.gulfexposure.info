@@ -1,0 +1,16 @@
+Users of the app are anonymous.  The do not have usernames, email
+addresses, passwords, etc.  On the frontend, we may allow a security
+feature that prevents use of the app unless a biometric result from
+the phone OS is used, or a pin code entered, but that is unrelated to
+the server.  The users may be given codenames so that they can be
+addressed, and they can identify that they are the correct user of the
+app.
+
+In the app, a unique identifier for that install is created.  That
+identifier is used to create and access a corresponding user record on
+the server.  The user record has associated survey answers, and
+location information.  Authoring information may be included.
+
+bundle exec rails g model user guid:string birthdate:date codename:string latitude:float longitude:float
+bundle exec rails g model survey_question text:string type:string choices:string{2048}
+bundle exec rails g model survey_answer text:string user:references survey_question:references
