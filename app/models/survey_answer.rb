@@ -1,4 +1,4 @@
 class SurveyAnswer < ApplicationRecord
-  belongs_to :user
   belongs_to :survey_question
+  belongs_to :user
 end

@@ -10,13 +10,13 @@ AdminUser.where(email: 'bfox@opuslogica.com').first_or_create(password: 'idtmp2t
 survey_groups = [
   { name: "Health Baseline",
     questions: [
-      { name: "Codename", type: "String", selection_type: "Fixed", instructions: "Your codename is chosen for you!" },
-      { name: "Birthdate", type: "Date", selection_type: "Date", instructions: "Your date of birth helps us to understand your problems better" },
-      { name: "Gender at Birth", type: "String", selection_type: "Pick One", options: ["Male", "Female"], instructions: "This is unrelated to your current gender" }
+      { name: "Codename", data_type: "String", selection_type: "Fixed", instructions: "Your codename is chosen for you!" },
+      { name: "Birthdate", data_type: "Date", selection_type: "Date", instructions: "Your date of birth helps us to understand your problems better" },
+      { name: "Gender at Birth", data_type: "String", selection_type: "Pick One", options: ["Male", "Female"], instructions: "This is unrelated to your current gender" }
     ]},
   { name: "Illness & Symptoms",
     questions: [
-      { name: "I'm suffering from", type: "String", selection_type: "Pick Many With Other",
+      { name: "I'm suffering from", data_type: "String", selection_type: "Pick Many With Other",
         options: [
           "Cancer/Leukimia",
           "Skin Irritations/Rashes/Lesions",
@@ -34,7 +34,7 @@ survey_groups = [
           "Muscular / skeletal issues",
           "Balding / hair loss" ],
         instructions: "Select all that apply, including pre-existing conditions" },
-      { name: "Your role(s) during the spill", type: "String", selection_type: "Pick Many With Other",
+      { name: "Your role(s) during the spill", data_type: "String", selection_type: "Pick Many With Other",
         options: [
           "Community member",
           "Cleanup worker",
@@ -48,8 +48,8 @@ survey_groups = [
     ]},
   { name: "Locations",
     questions: [
-      { name: "Location where you were exposed", type: "String", selection_type: "Location", instructions: "Enter zip code, address, or other location information" },
-      { name: "Location where you live now", type: "String", selection_type: "Location", instructions: "Enter zip code, address, or other location information" }
+      { name: "Location where you were exposed", data_type: "String", selection_type: "Location", instructions: "Enter zip code, address, or other location information" },
+      { name: "Location where you live now", data_type: "String", selection_type: "Location", instructions: "Enter zip code, address, or other location information" }
     ]}
 ];
 
@@ -61,7 +61,7 @@ survey_groups.each_with_index do |group, gi|
   group[:questions].each_with_index do |question, qi|
     question[:position] = qi + 1
     ar_question = SurveyQuestion.where(name: question[:name]).first_or_create
-    ar_question.update_attributes(survey_group: ar_group, instructions: question[:instructions], type: question[:type],
+    ar_question.update_attributes(survey_group: ar_group, instructions: question[:instructions], data_type: question[:data_type],
                                   selection_type: question[:selection_type], position: question[:position])
     ar_question.save
     if question[:options]
@@ -74,3 +74,5 @@ survey_groups.each_with_index do |group, gi|
     end
   end
 end
+
+

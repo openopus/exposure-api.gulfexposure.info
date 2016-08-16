@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816195644) do
+ActiveRecord::Schema.define(version: 20160816235031) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "namespace"
@@ -63,6 +63,25 @@ ActiveRecord::Schema.define(version: 20160816195644) do
     t.index ["token"], name: "index_api_tokens_on_token", using: :btree
   end
 
+  create_table "question_options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "survey_question_id"
+    t.string   "name"
+    t.integer  "position"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["survey_question_id"], name: "index_question_options_on_survey_question_id", using: :btree
+  end
+
+  create_table "survey_answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "survey_question_id"
+    t.integer  "user_id"
+    t.text     "value",              limit: 65535
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["survey_question_id"], name: "index_survey_answers_on_survey_question_id", using: :btree
+    t.index ["user_id"], name: "index_survey_answers_on_user_id", using: :btree
+  end
+
   create_table "survey_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "instructions", limit: 2048
@@ -72,8 +91,15 @@ ActiveRecord::Schema.define(version: 20160816195644) do
   end
 
   create_table "survey_questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "survey_group_id"
+    t.string   "name",            limit: 1024
+    t.string   "type"
+    t.string   "selection_type"
+    t.string   "instructions",    limit: 1024
+    t.integer  "position"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["survey_group_id"], name: "index_survey_questions_on_survey_group_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -86,4 +112,8 @@ ActiveRecord::Schema.define(version: 20160816195644) do
     t.datetime "updated_at",            null: false
   end
 
+  add_foreign_key "question_options", "survey_questions"
+  add_foreign_key "survey_answers", "survey_questions"
+  add_foreign_key "survey_answers", "users"
+  add_foreign_key "survey_questions", "survey_groups"
 end
