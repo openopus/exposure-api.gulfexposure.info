@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
+gem 'sqlite3'
 gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
@@ -17,6 +18,8 @@ gem 'sass-rails',          github: 'rails/sass-rails'
 gem 'activeadmin', github: 'activeadmin'
 
 gem 'generic_api_rails', git: 'https://github.com/opuslogica/generic-api-rails', branch: 'rails5'
+
+gem 'randexp'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

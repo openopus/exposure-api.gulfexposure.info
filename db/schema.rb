@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809125828) do
+ActiveRecord::Schema.define(version: 20160809131938) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "namespace"
@@ -61,6 +61,16 @@ ActiveRecord::Schema.define(version: 20160809125828) do
     t.index ["credential_id", "credential_type"], name: "index_api_tokens_on_credential_id_and_credential_type", using: :btree
     t.index ["person_id"], name: "index_api_tokens_on_person_id", using: :btree
     t.index ["token"], name: "index_api_tokens_on_token", using: :btree
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "guid"
+    t.date     "birthdate"
+    t.string   "codename"
+    t.float    "latitude",   limit: 24
+    t.float    "longitude",  limit: 24
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
 end

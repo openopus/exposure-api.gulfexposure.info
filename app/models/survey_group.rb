@@ -1,0 +1,2 @@
+class SurveyGroup < ApplicationRecord
+end
