@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809131938) do
+ActiveRecord::Schema.define(version: 20160816195644) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "namespace"
@@ -61,6 +61,19 @@ ActiveRecord::Schema.define(version: 20160809131938) do
     t.index ["credential_id", "credential_type"], name: "index_api_tokens_on_credential_id_and_credential_type", using: :btree
     t.index ["person_id"], name: "index_api_tokens_on_person_id", using: :btree
     t.index ["token"], name: "index_api_tokens_on_token", using: :btree
+  end
+
+  create_table "survey_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "instructions", limit: 2048
+    t.integer  "position"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "survey_questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
