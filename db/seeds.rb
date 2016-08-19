@@ -12,7 +12,7 @@ survey_groups = [
     questions: [
       { name: "Codename", data_type: "String", selection_type: "Fixed", instructions: "Your codename is chosen for you!" },
       { name: "Birthdate", data_type: "Date", selection_type: "Date", instructions: "Your date of birth helps us to understand your problems better" },
-      { name: "Gender at Birth", data_type: "String", selection_type: "Pick One", options: ["Male", "Female"], instructions: "This is unrelated to your current gender" }
+      { name: "Gender at Birth", data_type: "String", selection_type: "Pick One", options: ["Male", "Female", "Other"], instructions: "This is unrelated to your current gender" }
     ]},
   { name: "Illness & Symptoms",
     questions: [
@@ -34,7 +34,7 @@ survey_groups = [
           "Muscular / skeletal issues",
           "Balding / hair loss" ],
         instructions: "Select all that apply, including pre-existing conditions" },
-      { name: "Your role(s) during the spill", data_type: "String", selection_type: "Pick Many With Other",
+      { name: "My role(s) during the spill", data_type: "String", selection_type: "Pick Many With Other",
         options: [
           "Community member",
           "Cleanup worker",
