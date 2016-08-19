@@ -38,5 +38,3 @@ namespace :deploy do
 end
 
 before "deploy:assets:precompile", "deploy:linkup"
-
-
