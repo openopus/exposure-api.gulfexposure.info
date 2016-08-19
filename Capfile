@@ -1,4 +1,5 @@
 require "capistrano/setup"
+require "capistrano/bundler"
 require "capistrano/deploy"
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'

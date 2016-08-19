@@ -27,6 +27,11 @@ group :development, :test do
   gem 'byebug', platform: :mri
 end
 
+gem 'capistrano-rails'
+gem 'capistrano-bundler'
+gem 'capistrano-passenger'
+gem 'capistrano3-delayed-job'
+
 group :development do
 # gem 'rails-erd'
 
@@ -36,9 +41,5 @@ group :development do
 
 
   gem 'web-console'
-  gem 'capistrano-rails'
-  gem 'capistrano-bundler'
-  gem 'capistrano-passenger'
-  gem 'capistrano3-delayed-job'
   gem 'slackistrano'
 end
