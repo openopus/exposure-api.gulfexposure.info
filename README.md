@@ -28,8 +28,5 @@ How the models were created:
 bundle exec rails g model User guid:string birthdate:date codename:string latitude:float longitude:float
 bundle exec rails g model SurveyGroup name:string instructions:string{2048} position:integer --force
 bundle exec rails g model SurveyQuestion survey_group:references name:string{1024} type:string selection_type:string instructions:string{1024} position:integer --force
-bundle exec rails g model QuestionOption survey_question:references name:string position:integer
-bundle exec rails g model SurveyAnswer survey_question:references user:references value:text
-
-
-
+bundle exec rails g model QuestionOption survey_question:references name:string position:integer --force
+bundle exec rails g model SurveyAnswer survey_question:references user:references value:text --force
