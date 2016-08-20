@@ -20,7 +20,7 @@ gem 'activeadmin', github: 'activeadmin'
 
 gem 'generic_api_rails', git: 'https://github.com/opuslogica/generic-api-rails', branch: 'rails5'
 
-gem 'randexp'
+gem 'haikunator'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
