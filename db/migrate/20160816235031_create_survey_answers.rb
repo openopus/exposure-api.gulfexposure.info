@@ -3,7 +3,7 @@ class CreateSurveyAnswers < ActiveRecord::Migration[5.0]
     create_table :survey_answers do |t|
       t.references :survey_question, foreign_key: true
       t.references :user, foreign_key: true
-      t.answer :value
+      t.string :value
 
       t.timestamps
     end
