@@ -23,7 +23,7 @@ class SurveyAnswersController < GenericApiRails::RestController
 
   def setup
     @codename = params[:codename]
-    @user = User.where(codename: @codename).first
+    @user = User.where(codename: @codename).first if @codename
     @question = SurveyQuestion.find(params[:question_id]) if params[:question_id]
     @answer = SurveyAnswer.find(params[:answer_id]) if params[:answer_id]
   end
