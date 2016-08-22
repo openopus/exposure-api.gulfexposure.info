@@ -37,6 +37,7 @@ class SurveyController < GenericApiRails::RestController
           a = base.first_or_create
           a.value = answer[:answer]
           a.save
+          @user.birthdate = a.value && @user.save if a.survey_question.name == "Birthdate"
         end
       end
     end
