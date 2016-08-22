@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   before_save :unique_codename
-  has_many :answers, class_name: "SurveyAnswer"
+  has_many :answers, class_name: "SurveyAnswer", dependent: :destroy
 
   def self.generate_codename
     self.new.generate_codename
