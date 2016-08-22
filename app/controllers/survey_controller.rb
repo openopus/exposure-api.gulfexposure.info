@@ -26,6 +26,19 @@ class SurveyController < GenericApiRails::RestController
     render json: SurveyGroup.all.order(position: :asc).as_json({deep: true})
   end
   
+  def survey_submit
+    if @user
+      answers = params[:answers]
+      answers.each do |answer|
+        a = @user.answers.where(survey_question_id: answer[:question_id]).first_or_create
+        a.value = answer[:answer]
+        a.save
+      end
+    end
+
+    render json: { saved: true, message: "saved" }
+  end
+  
   def setup
     @codename = params[:codename]
     @user = User.where(codename: @codename).first if @codename
