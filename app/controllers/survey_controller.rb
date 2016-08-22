@@ -30,9 +30,14 @@ class SurveyController < GenericApiRails::RestController
     if @user
       answers = params[:answers]
       answers.each do |answer|
-        a = @user.answers.where(survey_question_id: answer[:question_id]).first_or_create
-        a.value = answer[:answer]
-        a.save
+        base = @user.answers.where(survey_question_id: answer[:question_id])
+        if answer[:answer].blank?
+          base.delete_all
+        else
+          a = base.first_or_create
+          a.value = answer[:answer]
+          a.save
+        end
       end
     end
 
