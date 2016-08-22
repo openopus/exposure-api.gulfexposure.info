@@ -1,4 +1,4 @@
-class SurveyAnswersController < GenericApiRails::RestController
+class SurveyController < GenericApiRails::RestController
   before_action :setup
   
   def model
@@ -21,6 +21,11 @@ class SurveyAnswersController < GenericApiRails::RestController
     render json: @answer
   end
 
+  def survey_template
+    template = SurveyGroup.all
+    render json: SurveyGroup.all.order(position: :asc).as_json({deep: true})
+  end
+  
   def setup
     @codename = params[:codename]
     @user = User.where(codename: @codename).first if @codename
