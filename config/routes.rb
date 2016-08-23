@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  get   'api/codename/regen/:codename'                              => 'codename#regen'
   get   'api/survey_template'                                       => 'survey#survey_template'
   post  'api/survey_submit'                                         => 'survey#survey_submit'
   get   'api/survey_answers_for/:codename'                          => 'survey#survey_answers_for'

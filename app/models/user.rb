@@ -19,4 +19,9 @@ class User < ApplicationRecord
       self.codename = candidate
     end
   end
+
+  def regen_codename
+    self.codename = nil
+    self.save
+  end
 end
