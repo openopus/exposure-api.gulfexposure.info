@@ -7,7 +7,7 @@ class User < ApplicationRecord
   end
   
   def generate_codename
-    Haikunator.haikunate(0).split('-').map(&:capitalize).join("")
+    /\w+/.gen.capitalize + /\w+/.gen.capitalize
   end
 
   def unique_codename
