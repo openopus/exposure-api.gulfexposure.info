@@ -7,7 +7,7 @@ class User < ApplicationRecord
   end
   
   def generate_codename
-    /\w+/.gen.capitalize + /\w+/.gen.capitalize
+    /\w{4,6}+/.gen.capitalize + /\w{4,6}+/.gen.capitalize
   end
 
   def unique_codename
