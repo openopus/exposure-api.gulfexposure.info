@@ -18,8 +18,17 @@ survey_groups = [
     questions: [
       { name: "I have been diagnosed with cancer", data_type: "String", selection_type: "Pick Many With Other",
         options: [
-          "Skin Irritations/Rashes/Lesions",
-          "Eye Irritation/Vision Issues",
+          "Angiosarcoma",
+          "Chondrosarcoma",
+          "Ewing's Sarcoma",
+          "Fibrosarcoma",
+          "Gastrintestinal Stromal Tumor",
+          "Leiomyosarcoma",
+          "Liposarcoma",
+          "Malignant Peripheral Nerve Sheath Tumor",
+          "Osteosarcoma",
+          "Rhabdomyosarcoma",
+          "Synovial Sarcoma"
         ],
         instructions: "Select all that apply" },
 

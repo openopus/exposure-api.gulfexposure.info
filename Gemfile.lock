@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/opuslogica/generic-api-rails
-  revision: e42c9ed81b0fa54f42709fa4b09aadb1c18966cd
+  revision: f430d07febd0cba3b55411675ff7cca0ad5f0b33
   branch: rails5
   specs:
     generic_api_rails (0.0.1)
