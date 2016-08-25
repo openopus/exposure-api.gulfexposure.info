@@ -10,13 +10,14 @@ AdminUser.where(email: 'bfox@opuslogica.com').first_or_create(password: 'idtmp2t
 survey_groups = [
   { name: "Health Baseline",
     questions: [
-      { name: "Codename", data_type: "String", selection_type: "Fixed", instructions: "Your codename is chosen for you!" },
-      { name: "Birthdate", data_type: "Date", selection_type: "Date", instructions: "Your date of birth helps us to understand your problems better" },
-      { name: "Gender at Birth", data_type: "String", selection_type: "Pick One", options: ["Male", "Female", "Other"], instructions: "This is unrelated to your current gender" }
+      { name: "Codename", tag: "codename", data_type: "String", selection_type: "Fixed", instructions: "Your codename is chosen for you!" },
+      { name: "Birthdate", tag: "birthdate", data_type: "Date", selection_type: "Date", instructions: "Your date of birth helps us to understand your problems better" },
+      { name: "Gender at Birth", tag: "gender", data_type: "String", selection_type: "Pick One", options: ["Male", "Female"], instructions: "This is unrelated to your current gender" }
     ]},
   { name: "Illness & Symptoms",
     questions: [
-      { name: "I have been diagnosed with cancer", data_type: "String", selection_type: "Pick Many With Other",
+      { name: "I have been diagnosed with cancer", tag: "has_cancer", data_type: "String", selection_type: "Boolean" },
+      { name: "Type of cancer(s) I have", tag: "cancers", data_type: "String", selection_type: "Pick Many With Other", dependent_on: "has_cancer", dependent_value: "Yes",
         options: [
           "Angiosarcoma",
           "Chondrosarcoma",
@@ -32,7 +33,7 @@ survey_groups = [
         ],
         instructions: "Select all that apply" },
 
-      { name: "I have the following symptoms", data_type: "String", selection_type: "Pick Many With Other",
+      { name: "I have the following symptoms", tag: "symptoms", data_type: "String", selection_type: "Pick Many With Other",
         options: [
           "Skin Irritations/Rashes/Lesions",
           "Eye Irritation/Vision Issues",
@@ -53,7 +54,7 @@ survey_groups = [
   
   { name: "Locations & Roles",
     questions: [
-      { name: "My role(s) during the spill", data_type: "String", selection_type: "Pick Many With Other",
+      { name: "My role(s) during the spill", tag: "role", data_type: "String", selection_type: "Pick Many With Other",
         options: [
           "Community member",
           "Cleanup worker",
@@ -64,8 +65,8 @@ survey_groups = [
           "Fisherman",
           "Boat captain / crew" ],
         instructions: "Select all that apply" },
-      { name: "Location where you were exposed", data_type: "String", selection_type: "Location", instructions: "Enter zip code, address, or other location information" },
-      { name: "Location where you live now", data_type: "String", selection_type: "Location", instructions: "Enter zip code, address, or other location information" }
+      { name: "Location where you were exposed", tag: "exposed-at", data_type: "String", selection_type: "Location", instructions: "Enter zip code, address, or other location information" },
+      { name: "Location where you live now", tag: "hometown", data_type: "String", selection_type: "Location", instructions: "Enter zip code, address, or other location information" }
     ]}
 ];
 
