@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
 
   private
   def get_device_id
-    @oli_device_id = request.headers["OLI-Device-ID"]
+    @oli_device_id ||= request.headers["OLI-Device-ID"]
   end
 end
