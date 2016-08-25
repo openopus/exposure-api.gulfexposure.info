@@ -17,6 +17,8 @@ gem 'ransack',             github: 'activerecord-hackery/ransack'
 gem 'draper',              '> 3.x'
 gem 'sass-rails',          github: 'rails/sass-rails'
 gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin-sortable'
+gem 'acts_as_list'
 
 gem 'generic_api_rails', git: 'https://github.com/opuslogica/generic-api-rails', branch: 'rails5'
 

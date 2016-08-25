@@ -1,6 +1,7 @@
 class SurveyQuestion < ApplicationRecord
   belongs_to :survey_group
-  has_many :options, class_name: QuestionOption, dependent: :destroy
+  acts_as_list scope: :survey_group
+  has_many :options, -> { order(position: :asc) }, class_name: QuestionOption, dependent: :destroy
 
   def as_json(opts={})
     res = super(opts)
