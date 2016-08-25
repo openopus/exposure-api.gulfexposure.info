@@ -16,8 +16,8 @@ survey_groups = [
     ]},
   { name: "Illness & Symptoms",
     questions: [
-      { name: "I have been diagnosed with cancer", tag: "has_cancer", data_type: "String", selection_type: "Boolean" },
-      { name: "Type of cancer(s) I have", tag: "cancers", data_type: "String", selection_type: "Pick Many With Other", dependent_on: "has_cancer", dependent_value: "Yes",
+      { name: "I have a cancer diagnosis...", tag: "has_cancer", data_type: "String", selection_type: "Boolean" },
+      { name: "Check all that apply", tag: "cancers", data_type: "String", selection_type: "Pick Many With Other", dependent_on: "has_cancer", dependent_value: "Yes",
         options: [
           "Angiosarcoma",
           "Chondrosarcoma",
@@ -79,7 +79,8 @@ survey_groups.each_with_index do |group, gi|
     question[:position] = qi + 1
     ar_question = SurveyQuestion.where(name: question[:name]).first_or_create
     ar_question.update_attributes(survey_group: ar_group, instructions: question[:instructions], data_type: question[:data_type],
-                                  selection_type: question[:selection_type], position: question[:position])
+                                  selection_type: question[:selection_type], tag: question[:tag], dependent_on: question[:dependent_on],
+                                  dependent_value: question[:dependent_value], position: question[:position])
     ar_question.save
     if question[:options]
       question[:options].each_with_index do |opttext, oi|
