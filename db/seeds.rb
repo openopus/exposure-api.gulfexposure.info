@@ -16,9 +16,15 @@ survey_groups = [
     ]},
   { name: "Illness & Symptoms",
     questions: [
-      { name: "I'm suffering from", data_type: "String", selection_type: "Pick Many With Other",
+      { name: "I have been diagnosed with cancer", data_type: "String", selection_type: "Pick Many With Other",
         options: [
-          "Cancer/Leukimia",
+          "Skin Irritations/Rashes/Lesions",
+          "Eye Irritation/Vision Issues",
+        ],
+        instructions: "Select all that apply" },
+
+      { name: "I have the following symptoms", data_type: "String", selection_type: "Pick Many With Other",
+        options: [
           "Skin Irritations/Rashes/Lesions",
           "Eye Irritation/Vision Issues",
           "Upper Respiratory Issues (nose, sinus, throat)",
@@ -34,6 +40,10 @@ survey_groups = [
           "Muscular / skeletal issues",
           "Balding / hair loss" ],
         instructions: "Select all that apply, including pre-existing conditions" },
+    ]},
+  
+  { name: "Locations & Roles",
+    questions: [
       { name: "My role(s) during the spill", data_type: "String", selection_type: "Pick Many With Other",
         options: [
           "Community member",
@@ -44,10 +54,7 @@ survey_groups = [
           "Contractor",
           "Fisherman",
           "Boat captain / crew" ],
-        instructions: "Select all that apply" }
-    ]},
-  { name: "Locations",
-    questions: [
+        instructions: "Select all that apply" },
       { name: "Location where you were exposed", data_type: "String", selection_type: "Location", instructions: "Enter zip code, address, or other location information" },
       { name: "Location where you live now", data_type: "String", selection_type: "Location", instructions: "Enter zip code, address, or other location information" }
     ]}

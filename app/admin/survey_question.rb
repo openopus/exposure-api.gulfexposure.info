@@ -7,6 +7,7 @@ ActiveAdmin.register SurveyQuestion do
     sortable_handle_column
     id_column
     column :position
+    column :survey_group
     column :name
     column :data_type
     column :selection_type
