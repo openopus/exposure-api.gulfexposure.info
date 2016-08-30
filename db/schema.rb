@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816235031) do
+ActiveRecord::Schema.define(version: 20160827153953) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "namespace"
@@ -61,6 +61,24 @@ ActiveRecord::Schema.define(version: 20160816235031) do
     t.index ["credential_id", "credential_type"], name: "index_api_tokens_on_credential_id_and_credential_type", using: :btree
     t.index ["person_id"], name: "index_api_tokens_on_person_id", using: :btree
     t.index ["token"], name: "index_api_tokens_on_token", using: :btree
+  end
+
+  create_table "post_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "post_id"
+    t.string   "mime_type"
+    t.binary   "image_data", limit: 16777215
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["post_id"], name: "index_post_images_on_post_id", using: :btree
+  end
+
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
   create_table "question_options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -115,6 +133,8 @@ ActiveRecord::Schema.define(version: 20160816235031) do
     t.datetime "updated_at",            null: false
   end
 
+  add_foreign_key "post_images", "posts"
+  add_foreign_key "posts", "users"
   add_foreign_key "question_options", "survey_questions"
   add_foreign_key "survey_answers", "survey_questions"
   add_foreign_key "survey_answers", "users"

@@ -28,14 +28,15 @@ class SurveyController < GenericApiRails::RestController
   
   def survey_submit
     if @user
+      @user.answers.delete_all
       answers = params[:answers]
       answers.each do |answer|
-        base = @user.answers.where(survey_question_id: answer[:question_id])
-        if answer[:answer].blank?
+        base = @user.answers.where(survey_question_id: answer[:survey_question_id])
+        if answer[:value].blank?
           base.delete_all
         else
           a = base.first_or_create
-          a.value = answer[:answer]
+          a.value = answer[:value]
           a.save
           @user.birthdate = a.value && @user.save if a.survey_question.name == "Birthdate"
         end
