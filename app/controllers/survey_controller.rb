@@ -39,8 +39,8 @@ class SurveyController < GenericApiRails::RestController
           a.value = answer[:value]
           a.save
           @user.birthdate = a.value if a.survey_question.tag == "birthdate"
-          if survey_question.tag == "hometown"
-            location = Geocode.search(a.value)
+          if a.survey_question.tag == "hometown"
+            location = Geocoder.search(a.value)
             @user.latitude = location[0].latitude rescue nil
             @user.longitude = location[0].longitude rescue nil
           end

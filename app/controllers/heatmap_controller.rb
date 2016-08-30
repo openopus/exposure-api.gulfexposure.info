@@ -6,7 +6,7 @@ class HeatmapController < GenericApiRails::BaseController
 
   def heatmap
     @users = User.where.not(latitude: nil).where.not(longitude: nil)
-    @heatmap = @users.select([:latitude, :longitude])
+    @heatmap = @users.select([:codename, :latitude, :longitude])
     render json: @heatmap
   end
 
