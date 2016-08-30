@@ -7,7 +7,7 @@ class SurveyController < GenericApiRails::RestController
 
   def survey_answers_for
     @answers = []
-    @answers = @user.answers if @user
+    @answers = @user.answers.order(survey_question_id: :asc) if @user
     render json: @answers
   end
 
