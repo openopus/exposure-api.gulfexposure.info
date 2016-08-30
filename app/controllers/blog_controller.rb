@@ -12,12 +12,12 @@ class BlogController < GenericApiRails::RestController
   def create
     result = { error: "Error creating the post" }
     result = Post.where(title: @params[:title], user: @user).first_or_create(content: @params[:content])
-    return json: result
+    render json: result
   end
 
   def update
     @post.update_attributes(@params)
-    return json: @post
+    render json: @post
   end
 
   def add_image
@@ -25,7 +25,7 @@ class BlogController < GenericApiRails::RestController
     if @post
       result = @post
     end
-    return json: result
+    render json: result
   end
   
   def setup
