@@ -10,7 +10,7 @@ class BlogController < GenericApiRails::RestController
   end
 
   def create
-    result == { error: "Error creating the post" }
+    result = { error: "Error creating the post" }
     result = Post.where(title: @params[:title], user: @user).first_or_create(content: @params[:content])
     return json: result
   end
@@ -23,7 +23,6 @@ class BlogController < GenericApiRails::RestController
   def add_image
     result = { error: "No such post" }
     if @post
-      debugger
       result = @post
     end
     return json: result
