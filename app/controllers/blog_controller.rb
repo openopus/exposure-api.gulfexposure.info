@@ -10,9 +10,14 @@ class BlogController < GenericApiRails::RestController
   end
 
   def create
-    result = { error: "Error creating the post" }
-    result = Post.where(title: @params[:title], user: @user).first_or_create(content: @params[:content])
-    render json: result
+    @post = Post.where(title: params[:title], user: @user).first_or_create(content: params[:content])
+    if params[:images]
+      params[:images].each do |image|
+        uri = URI::Data.new(image)
+        image = @post.images.create(mime_type: "image/jpeg", image_data: uri.data)
+      end
+    end
+    render json: @post
   end
 
   def update
@@ -34,6 +39,6 @@ class BlogController < GenericApiRails::RestController
     @user ||= User.where(id: params[:user_id]).first if params[:user_id]
     @post = Post.where(id: params[:id]).first if params[:id]
     @post ||= Post.where(id: params[:post_id]).first if params[:post_id]
-    @params = params.permit(:id, :post_id, :title, :image_data, :mime_type, :image_id);
+    @params = params.permit(:id, :post_id, :title, :author, :date, :mime_type, :image_id, :author, :date)
   end
 end

@@ -143,6 +143,7 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
+    data_uri (0.1.0)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -301,6 +302,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano3-delayed-job
   coffee-rails (~> 4.2)
+  data_uri
   devise
   draper (> 3.x)
   generic_api_rails!
