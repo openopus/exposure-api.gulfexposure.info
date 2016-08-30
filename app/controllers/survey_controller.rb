@@ -5,6 +5,11 @@ class SurveyController < GenericApiRails::RestController
     @model ||= SurveyAnswer
   end
 
+  def survey_remove
+    result = true
+    @user.destroy if @user
+    render json: result
+  end
   def survey_answers_for
     @answers = []
     @answers = @user.answers.order(survey_question_id: :asc) if @user

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get   'api/survey_template'                                       => 'survey#survey_template'
   post  'api/survey_submit'                                         => 'survey#survey_submit'
   get   'api/survey_answers_for/:codename'                          => 'survey#survey_answers_for'
+  match 'api/survey_remove(/:codename)'                             => 'survey#survey_remove',       via: [:delete, :post]
   get   'api/heatmap'                                               => 'heatmap#heatmap'
 
   match 'api/answer_question_for/:codename/:question_id(/:value)'   => 'survey#answer_question_for', via: [:get, :post]
