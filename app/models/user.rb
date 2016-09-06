@@ -27,6 +27,6 @@ class User < ApplicationRecord
 
   def send_notification(options={})
     options = { alert: options } if options.is_a?(String)
-    APNS.send_notification(device_token, options)
+    APNS.send_notification(self.device_uuid, options)
   end
 end
