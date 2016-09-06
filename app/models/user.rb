@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   before_save :unique_codename
   has_many :answers, class_name: "SurveyAnswer", dependent: :destroy
+  has_many :devices, primary_key: :guid, foreign_key: :user_guid
+  has_many :other_users, class_name: "User", primary_key: :guid, foreign_key: :guid
 
   def self.generate_codename
     self.new.generate_codename
@@ -26,7 +28,8 @@ class User < ApplicationRecord
   end
 
   def send_notification(options={})
-    options = { alert: options } if options.is_a?(String)
-    APNS.send_notification(self.device_uuid, options)
+    devices.each do |device|
+      APNS.send_notification(device.token, options)
+    end
   end
 end

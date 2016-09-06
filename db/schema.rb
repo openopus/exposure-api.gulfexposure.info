@@ -63,6 +63,13 @@ ActiveRecord::Schema.define(version: 20160827153953) do
     t.index ["token"], name: "index_api_tokens_on_token", using: :btree
   end
 
+  create_table "devices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "user_guid"
+    t.string "token"
+    t.string "os"
+    t.string "ua"
+  end
+
   create_table "post_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "post_id"
     t.string   "mime_type"
@@ -125,15 +132,12 @@ ActiveRecord::Schema.define(version: 20160827153953) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "guid"
-    t.string   "device_os"
-    t.string   "device_uuid"
-    t.string   "user_agent"
     t.date     "birthdate"
     t.string   "codename"
-    t.float    "latitude",    limit: 24
-    t.float    "longitude",   limit: 24
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.float    "latitude",   limit: 24
+    t.float    "longitude",  limit: 24
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   add_foreign_key "post_images", "posts"
