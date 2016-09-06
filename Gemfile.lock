@@ -171,6 +171,8 @@ GEM
     has_scope (0.7.0)
       actionpack (>= 4.1, < 5.1)
       activesupport (>= 4.1, < 5.1)
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jquery-rails (4.2.1)
       rails-dom-testing (>= 1, < 3)
@@ -200,6 +202,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
+    multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.4.4)
     net-scp (1.2.1)
@@ -214,6 +217,9 @@ GEM
     polyamorous (1.3.1)
       activerecord (>= 3.0)
     puma (3.6.0)
+    pushmeup (0.3.0)
+      httparty
+      json
     rack (2.0.1)
     rack-cors (0.4.0)
     rack-test (0.6.3)
@@ -312,6 +318,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mysql2 (>= 0.3.18, < 0.5)
   puma (~> 3.0)
+  pushmeup
   rack-cors
   rails (~> 5.0.0)
   rake (~> 11.2.2)

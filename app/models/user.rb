@@ -24,4 +24,9 @@ class User < ApplicationRecord
     self.codename = nil
     self.save
   end
+
+  def send_notification(options={})
+    options = { alert: options } if options.is_a?(String)
+    APNS.send_notification(device_token, options)
+  end
 end

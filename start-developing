@@ -11,7 +11,9 @@ EOF
 if [ ! -f config/database.yml ]; then cp config/database.yml-localhost config/database.yml; fi
 bundle install --path=vendor
 
-# bundle exec rake db:drop
+if [ "$1" == "--drop" ]; then
+    bundle exec rake db:drop
+fi
 bundle exec rake db:create 2>/dev/null
 bundle exec rake db:migrate
 bundle exec rake db:seed

@@ -20,6 +20,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'activeadmin-sortable'
 gem 'acts_as_list'
 gem 'data_uri'
+gem 'pushmeup'
 
 gem 'generic_api_rails', git: 'https://github.com/opuslogica/generic-api-rails', branch: 'rails5'
 
