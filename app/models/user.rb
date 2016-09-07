@@ -27,9 +27,9 @@ class User < ApplicationRecord
     self.save
   end
 
-  def send_notification(options={})
+  def send_notification(options={ alert: "A random alert", sound: "default", badge: 42 })
     devices.each do |device|
-      APNS.send_notification(device.token, options)
+      device.send_notification(options)
     end
   end
 end
