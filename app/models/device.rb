@@ -6,7 +6,7 @@ class Device < ApplicationRecord
     if self.os == "ios"
       APNS.send_notification(self.token, options)
     elsif self.os == "android"
-      data = { notification: { body: options: alert, title: options[:title] } }
+      data = { notification: { body: options[:alert], title: options[:title] } }
       GCM.send_notification(self.token, data)
     end
   end
