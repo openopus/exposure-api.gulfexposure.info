@@ -65,7 +65,8 @@ survey_groups = [
           "Government employee",
           "Contractor",
           "Fisherman",
-          "Boat captain / crew" ],
+          "Boat captain / crew",
+          "Just went to the beach" ],
         instructions: "Select all that apply" },
       { name: "Location where you were exposed", tag: "exposed-at", data_type: "String", selection_type: "Location", instructions: "Enter zip code, address, or other location information" },
       { name: "Location where you live now", tag: "hometown", data_type: "String", selection_type: "Location", instructions: "Enter zip code, address, or other location information" }
