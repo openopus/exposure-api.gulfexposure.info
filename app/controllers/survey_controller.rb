@@ -44,6 +44,18 @@ class SurveyController < GenericApiRails::RestController
           a.value = answer[:value]
           a.save
           @user.birthdate = a.value if a.survey_question.tag == "birthdate"
+          if a.survey_question.tag == "current-age"
+            @user.birthdate = DateTime.now - (2.years + 6.months) if a.value.starts_with?("0 - 5")
+            @user.birthdate = DateTime.now - (8.years + 6.months) if a.value.starts_with?("6 - 10")
+            @user.birthdate = DateTime.now - (13.years + 6.months) if a.value.starts_with?("11 - 17")
+            @user.birthdate = DateTime.now - (21.years + 6.months) if a.value.starts_with?("18 - 25")
+            @user.birthdate = DateTime.now - (30.years + 6.months) if a.value.starts_with?("26 - 35")
+            @user.birthdate = DateTime.now - (40.years + 6.months) if a.value.starts_with?("36 - 45")
+            @user.birthdate = DateTime.now - (50.years + 6.months) if a.value.starts_with?("46 - 55")
+            @user.birthdate = DateTime.now - (60.years + 6.months) if a.value.starts_with?("56 - 65")
+            @user.birthdate = DateTime.now - (70.years + 6.months) if a.value.starts_with?("66 - 75")
+            @user.birthdate = DateTime.now - (82.years + 0.months) if a.value.starts_with?("76 - 99")
+          end
           if a.survey_question.tag == "hometown"
             location = Geocoder.search(a.value)
             @user.latitude = location[0].latitude rescue nil
