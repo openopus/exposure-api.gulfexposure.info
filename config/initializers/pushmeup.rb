@@ -20,4 +20,5 @@ GCM.host = 'https://android.googleapis.com/gcm/send'
 GCM.format = :json
 
 # this is the apiKey obtained from here https://code.google.com/apis/console/
-GCM.key = "123abc456def"
+GCM.key = "AIzaSyD9ifQNiQG9APfhy0Fuy8kjfFPLmdks9O0"
+

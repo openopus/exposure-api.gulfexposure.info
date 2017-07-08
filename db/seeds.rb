@@ -11,7 +11,12 @@ survey_groups = [
   { name: "Health Baseline",
     questions: [
       { name: "Codename", tag: "codename", data_type: "String", selection_type: "Fixed", instructions: "Your codename is chosen for you!" },
-      { name: "Birthdate", tag: "birthdate", data_type: "Date", selection_type: "Date", instructions: "Your date of birth helps us to understand your problems better" },
+
+#       { name: "Birthdate", tag: "birthdate", data_type: "Date", selection_type: "Date", instructions: "Your date of birth helps us to understand your problems better" },
+
+      { name: "Birthdate", tag: "birthdate", data_type: "String", selection_type: "Pick One", options: ["0 - 5 years", "6 - 10 years", "11 - 17 years", "18 - 25 years", "26 - 35 years", "36 - 45 years", "46 - 55 years" "56 - 65 years", "66 - 75 years", "76 - 99 years"], instructions: "Your age helps us to understand your problems better" },
+
+
       { name: "Gender at Birth", tag: "gender", data_type: "String", selection_type: "Pick One", options: ["Male", "Female"], instructions: "This is unrelated to your current gender" },
       { name: "Life Status", tag: "life-status", data_type: "String", selection_type: "Pick One", options: ["Alive", "Bedridden", "Deceased"], instructions: "How well is the patient doing overall?" },
       { name: "Date Passed", tag: "passdate", data_type: "Date", selection_type: "Date", instructions: "The date of birth that this individual passed.", dependent_on: "life-status", dependent_value: "Deceased" }
